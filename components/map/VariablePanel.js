@@ -44,6 +44,8 @@ export default function VariablePanel(props) {
   const dataPresets = useSelector((state) => state.dataPresets);
   const [activeThemes, setActiveThemes] = useState([]);
   const autocompleteRef = useRef(null);
+  console.log('The data presets are:', dataPresets?.data?.map(f=>f.name))
+  console.log('Formatted as:', dataPresets?.data?.map(f=>f.name?.split('US ')[1]))
 
   const toggleTheme = (theme) => {
     setActiveThemes((activeThemes) => {
@@ -123,6 +125,8 @@ export default function VariablePanel(props) {
                 ))}
               </>
             )}
+            <p>Manual Tracts Test</p>
+            <button onClick={() => alert(`Available Datasets are ${JSON.stringify(dataPresets.data.map(f=>f.name).join(","))}`)}>Tracts</button>
             <br />
             {dataParams.numerator ? (
               <button
